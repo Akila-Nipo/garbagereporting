@@ -12,11 +12,18 @@
         android:scaleType="centerCrop"
         android:layout_marginBottom="8dp" />
 
+
+
     <Button
         android:id="@+id/btnUpload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Upload Image" />
+
+    <Spinner
+        android:id="@+id/spinnerCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/etName"
@@ -28,13 +35,16 @@
         android:id="@+id/etPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Price" />
+        android:hint="Price"
+        android:inputType="numberDecimal"/>
 
     <EditText
         android:id="@+id/etQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Quantity" />
+        android:hint="Quantity"
+        android:inputType="numberDecimal"/>
+
 
     <Button
         android:id="@+id/btnSave"

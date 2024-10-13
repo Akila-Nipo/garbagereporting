@@ -18,6 +18,12 @@
         android:text="View Items" />
 
     <Button
+        android:id="@+id/btnViewOrderDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Order Details" />
+
+    <Button
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

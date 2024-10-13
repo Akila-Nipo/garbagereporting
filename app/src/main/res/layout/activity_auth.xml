@@ -19,15 +19,17 @@
         android:hint="Password"
         android:inputType="textPassword"/>
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register"/>
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"/>
+
+    <Button
+        android:id="@+id/btnOrderMeals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Order meals"/>
+
 </LinearLayout>

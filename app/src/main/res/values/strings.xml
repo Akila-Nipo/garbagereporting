@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">garbagereporting</string>
     <string name="image_preview">Image Preview</string>
+    <string-array name="category_array">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
 
+    </string-array>
 </resources>

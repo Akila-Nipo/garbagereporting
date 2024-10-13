@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnAddItems, btnViewItems, btnLogout;
+    private Button btnAddItems, btnViewItems, btnLogout,btnViewOrderDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         btnAddItems = findViewById(R.id.btnAddItems);
         btnViewItems = findViewById(R.id.btnViewItems);
         btnLogout = findViewById(R.id.btnLogout);
+        btnViewOrderDetails = findViewById(R.id.btnViewOrderDetails);
 
         btnAddItems.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AddItemsActivity.class);
@@ -37,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, AuthActivity.class);
             startActivity(intent);
             finish();
+        });
+
+
+        btnViewOrderDetails.setOnClickListener(v -> {
+            Intent intent = new Intent(this, OrderDetailsActivity.class);
+            startActivity(intent);
         });
     }
 }

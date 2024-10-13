@@ -7,7 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ImageView; // Make sure this is imported
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,11 +17,15 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 public class ViewItemsActivity extends AppCompatActivity {
 
     private static final int PERMISSION_REQUEST_CODE = 100;
     private LinearLayout itemsContainer;
+    private HashMap<String, List<File>> categoryItemsMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,21 +80,52 @@ public class ViewItemsActivity extends AppCompatActivity {
         File[] files = directory.listFiles();
 
         if (files != null && files.length > 0) {
-            itemsContainer.removeAllViews();  // Clear previous items
+            categoryItemsMap = new HashMap<>();
 
+            // Organize files by category
             for (File file : files) {
                 if (file.getName().endsWith(".jpg")) {
                     String[] details = file.getName().replace(".jpg", "").split("_");
-                    String itemName = details.length > 0 ? details[0] : "Unknown";
-                    String itemPrice = details.length > 1 ? details[1] : "0";
-                    String itemQuantity = details.length > 2 ? details[2] : "0";
+                    String itemCategory = details.length > 3 ? details[3] : "Uncategorized"; // Get the category
 
-                    LinearLayout itemLayout = createItemLayout(file, itemName, itemPrice, itemQuantity);
-                    itemsContainer.addView(itemLayout);
+                    // Add the file to the corresponding category list
+                    if (!categoryItemsMap.containsKey(itemCategory)) {
+                        categoryItemsMap.put(itemCategory, new ArrayList<>());
+                    }
+                    categoryItemsMap.get(itemCategory).add(file);
                 }
+            }
+
+            // Clear previous items
+            itemsContainer.removeAllViews();
+
+            // Create views for each category and its items
+            for (String category : categoryItemsMap.keySet()) {
+                addCategorySection(category, categoryItemsMap.get(category));
             }
         } else {
             Toast.makeText(this, "No items found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // Add a section for a specific category
+    private void addCategorySection(String category, List<File> items) {
+        // Add category heading
+        TextView categoryHeading = new TextView(this);
+        categoryHeading.setText(category);
+        categoryHeading.setTextSize(20);
+        categoryHeading.setPadding(0, 20, 0, 10);
+        itemsContainer.addView(categoryHeading);
+
+        // Add items under this category
+        for (File file : items) {
+            String[] details = file.getName().replace(".jpg", "").split("_");
+            String itemName = details.length > 0 ? details[0] : "Unknown";
+            String itemPrice = details.length > 1 ? details[1] : "0";
+            String itemQuantity = details.length > 2 ? details[2] : "0";
+
+            LinearLayout itemLayout = createItemLayout(file, itemName, itemPrice, itemQuantity);
+            itemsContainer.addView(itemLayout);
         }
     }
 

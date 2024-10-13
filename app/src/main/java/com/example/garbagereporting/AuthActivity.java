@@ -9,9 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+
+
 public class AuthActivity extends AppCompatActivity {
     private EditText etEmail, etPassword;
-    private Button btnLogin, btnRegister;
+    private Button btnLogin, btnOrderMeals;
     private FirebaseAuth mAuth;
 
 
@@ -37,12 +39,18 @@ public class AuthActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
-        btnRegister = findViewById(R.id.btnRegister);
+        btnOrderMeals = findViewById(R.id.btnOrderMeals);
 
-        // Set onClick listeners for buttons
-        btnRegister.setOnClickListener(v -> registerUser());
+
+
         btnLogin.setOnClickListener(v -> loginUser());
+        btnOrderMeals.setOnClickListener(v -> {
+            Intent intent = new Intent(AuthActivity.this, OrderMealsActivity.class);
+            startActivity(intent);
+        });
     }
+
+
 
     private void registerUser() {
         String email = etEmail.getText().toString();
@@ -74,5 +82,4 @@ public class AuthActivity extends AppCompatActivity {
                     }
                 });
     }
-
 }
