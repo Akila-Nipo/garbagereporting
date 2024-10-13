@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "825481546872",
+    "project_id": "garbagereporting-97bd3",
+    "storage_bucket": "garbagereporting-97bd3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825481546872:android:81b8f29c8fc3a67513318d",
+        "android_client_info": {
+          "package_name": "com.example.garbagereporting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825481546872-fuid51v8hidafgetifj8si248h9tctju.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlgiDiqt_jN60Fx0dOzYG9e_mQvdn01ks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825481546872-fuid51v8hidafgetifj8si248h9tctju.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
